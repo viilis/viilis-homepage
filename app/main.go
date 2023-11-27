@@ -4,10 +4,10 @@ import (
 	"html/template"
 	"io"
 	"net/http"
+	"viilis/utils"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/viilis/app/utils"
 )
 
 type Template struct {
