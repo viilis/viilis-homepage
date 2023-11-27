@@ -8,6 +8,15 @@
     <p>
         {{.Content}}
     </p>
+    <ul class="links">
+        {{range .Links}}
+            <li>
+                <a href={{.Url}}>
+                    {{.Title}}
+                </a>
+            </li>
+        {{end}}
+    </ul>
 </div>
 
 {{end}}

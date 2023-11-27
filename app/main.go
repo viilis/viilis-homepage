@@ -60,24 +60,24 @@ func main() {
 		pageContent := TemplateMain{
 			Content: TemplateContent{
 				"Ville Lindberg",
-				`Software Engineer | Co-Founder of Kvanttori | CS Student`,
+				`Software Engineer | Co-Founder of Kvanttori | ICT student at UTU`,
 				[]TemplateLink{
 					{
-						"LinkedIn",
+						"🖥️ GitHub",
+						"https://github.com/viilis",
+					},
+					{
+						"🤝 LinkedIn",
 						"https://www.linkedin.com/in/ville-l-4a6398206/",
 					},
 					{
-						"Kvanttori Oy",
+						"🏢 Kvanttori Oy",
 						"https://kvanttori.fi",
 					},
-					{
-						"GitHub",
-						"https://github.com/viilis",
-					}
 				},
 			},
 			Meta: TemplateMeta{
-				"Homepage",
+				"viilis.dev",
 				"Nice and good SEO desc here",
 			},
 		}
