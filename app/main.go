@@ -18,6 +18,26 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 
+type TemplateMain struct {
+	Content TemplateContent
+	Meta    TemplateMeta
+}
+
+type TemplateLink struct {
+	Title string
+	Url   string
+}
+type TemplateContent struct {
+	Head    string
+	Content string
+	Links   []TemplateLink
+}
+
+type TemplateMeta struct {
+	Title       string
+	Description string
+}
+
 func main() {
 
 	// load config
@@ -29,15 +49,41 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	e.Static("/assets", "assets")
+
 	e.Renderer = &Template{
 		templates: template.Must(template.ParseGlob("assets/templates/*.html")),
 	}
 
 	e.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "hello", "test")
-	})
 
-	e.Static("/assets", "assets")
+		pageContent := TemplateMain{
+			Content: TemplateContent{
+				"Ville Lindberg",
+				`Software Engineer | Co-Founder of Kvanttori | CS Student`,
+				[]TemplateLink{
+					{
+						"LinkedIn",
+						"https://www.linkedin.com/in/ville-l-4a6398206/",
+					},
+					{
+						"Kvanttori Oy",
+						"https://kvanttori.fi",
+					},
+					{
+						"GitHub",
+						"https://github.com/viilis",
+					}
+				},
+			},
+			Meta: TemplateMeta{
+				"Homepage",
+				"Nice and good SEO desc here",
+			},
+		}
+
+		return c.Render(http.StatusOK, "main", pageContent)
+	})
 
 	e.Logger.Fatal(e.Start(":" + utils.Config.Port))
 }

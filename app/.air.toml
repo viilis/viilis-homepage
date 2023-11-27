@@ -1,24 +1,24 @@
 # Working directory
 # . or absolute path, please note that the directories following must be under root.
-root = "./"
+root = "."
 testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
   args_bin = []
   bin = "./tmp/main"
-  cmd = "go build -o ./tmp/main ./app"
+  cmd = "go build -o ./tmp/main ."
   delay = 1000
-  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  exclude_dir = ["tmp", "vendor", "testdata"]
   exclude_file = []
   exclude_regex = ["_test\\.go"]
   exclude_unchanged = false
   follow_symlink = false
   # Customize binary, can setup environment variables when run your app.
   full_bin = "PORT=3000 ./tmp/main"
-  include_dir = ["app"]
+  include_dir = ["assets", "utils"]
   include_ext = ["go", "html", "css"]
-  include_file = []
+  include_file = ["main.go"]
   kill_delay = "0s"
   log = "build-errors.log"
   poll = false

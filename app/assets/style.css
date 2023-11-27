@@ -1,3 +1,25 @@
 body {
-  background-color: red;
+  background-color: rgb(41, 41, 41);
+  color: rgb(202, 255, 202);
+  
+  font-size: 18px;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 55rem;
+  margin: 5rem auto;
+}
+
+.content {
+  
+}
+
+.header {
+  font-family: 'Sometype Mono', monospace;
 }
